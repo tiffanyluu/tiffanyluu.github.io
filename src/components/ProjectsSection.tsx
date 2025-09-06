@@ -1,4 +1,4 @@
-import { SiReact, SiNodedotjs, SiPostgresql, SiTypescript } from "react-icons/si";
+import { SiReact, SiNodedotjs, SiPostgresql, SiTypescript, SiJavascript } from "react-icons/si";
 import { Button } from "./ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from "./ui/card";
 import AOS from 'aos';
@@ -11,39 +11,80 @@ const projects = [
     img: "src/assets/moviematcher.png",
     description: "A movie recommendation system that uses ML algorithms to suggest movies.",
     tech: [
-      { name: "React", icon: <SiReact size={16} />, color: "bg-blue-200 text-blue-800" },
-      { name: "Node.js", icon: <SiNodedotjs size={16} />, color: "bg-green-200 text-green-800" },
-      { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-yellow-200 text-yellow-800" },
-      { name: "TypeScript", icon: <SiTypescript size={16} />, color: "bg-purple-200 text-purple-800" },
+      { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
+      { name: "Node.js", icon: <SiNodedotjs size={16} />, color: "bg-green-200 text-green-900" },
+      { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-orange-200 text-orange-900" },
+      { name: "TypeScript", icon: <SiTypescript size={16} />, color: "bg-indigo-200 text-indigo-900" },
     ],
-    demoLink: "#",
-    codeLink: "#",
+    demoLink: "https://movie-matcher-tiffany.vercel.app/login",
+    codeLink: "https://github.com/tiffanyluu/movie-matcher",
   },
   {
     title: "Turnip Trader",
     img: "src/assets/turniptrader.png",
     description: "AI-powered Animal Crossing turnip price simulator and advisor using RAG and LLMs.",
     tech: [
-      { name: "React", icon: <SiReact size={16} />, color: "bg-blue-200 text-blue-800" },
-      { name: "Node.js", icon: <SiNodedotjs size={16} />, color: "bg-green-200 text-green-800" },
-      { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-yellow-200 text-yellow-800" },
-      { name: "TypeScript", icon: <SiTypescript size={16} />, color: "bg-purple-200 text-purple-800" },
+      { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
+      { name: "Node.js", icon: <SiNodedotjs size={16} />, color: "bg-green-200 text-green-900" },
+      { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-orange-200 text-orange-900" },
+      { name: "TypeScript", icon: <SiTypescript size={16} />, color: "bg-indigo-200 text-indigo-900" },
     ],
-    demoLink: "#",
-    codeLink: "#",
+    demoLink: "https://turnip-trader.vercel.app/",
+    codeLink: "https://github.com/tiffanyluu/turnip-trader",
   },
   {
     title: "PetRealm",
     img: "src/assets/petrealm.png",
     description: "Virtual mythical pet simulation with AWS serverless automation.",
     tech: [
-      { name: "React", icon: <SiReact size={16} />, color: "bg-blue-200 text-blue-800" },
-      { name: "Node.js", icon: <SiNodedotjs size={16} />, color: "bg-green-200 text-green-800" },
-      { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-yellow-200 text-yellow-800" },
-      { name: "TypeScript", icon: <SiTypescript size={16} />, color: "bg-purple-200 text-purple-800" },
+      { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
+      { name: "Node.js", icon: <SiNodedotjs size={16} />, color: "bg-green-200 text-green-900" },
+      { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-orange-200 text-orange-900" },
+      { name: "TypeScript", icon: <SiTypescript size={16} />, color: "bg-indigo-200 text-indigo-900" },
     ],
-    demoLink: "#",
-    codeLink: "#",
+    demoLink: "https://petrealm.vercel.app/",
+    codeLink: "https://github.com/tiffanyluu/petrealm",
+  },
+  {
+    title: "Barber Supply",
+    img: "src/assets/barber.png",
+    description: "Crud inventory management app for local barber shop",
+    tech: [
+      { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
+      { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-orange-200 text-orange-900" },
+    ],
+    codeLink: "https://github.com/tiffanyluu/barber-supply",
+  },
+  {
+    title: "Caro",
+    img: "src/assets/caro.png",
+    description: "Traditional Vietnamese strategy game.",
+    tech: [
+      { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
+    ],
+    demoLink: "https://tiffanyluu.github.io/caro/",
+    codeLink: "https://github.com/tiffanyluu/caro",
+  },
+  {
+    title: "Pokemon Memory Game",
+    img: "src/assets/pokemon.png",
+    description: "A memory game featuring over 1,000 Pokémon using the PokéAPI.",
+    tech: [
+      { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
+      { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
+    ],
+    demoLink: "https://tiffany-pokemon-memory-game.vercel.app/",
+    codeLink: "https://github.com/tiffanyluu/pokemon-memory-game",
+  },
+  {
+    title: "Sproutly",
+    img: "src/assets/sproutly.png",
+    description: "To-Do App: Where every task is a sprout of progress.",
+    tech: [
+      { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
+    ],
+    demoLink: "https://tiffanyluu.github.io/sproutly/",
+    codeLink: "https://github.com/tiffanyluu/sproutly",
   },
 ];
 
@@ -78,18 +119,20 @@ const ProjectsSection = () => {
                 {project.tech.map((tech) => (
                   <span
                     key={tech.name}
-                    className={`${tech.color} px-2 py-1 rounded-full text-sm font-medium flex items-center gap-1 hover:scale-105 transition-transform`}
+                    className={`${tech.color} px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 hover:scale-105 transition-transform`}
                   >
                     {tech.icon} {tech.name}
                   </span>
                 ))}
               </div>
               <CardFooter className="flex justify-evenly items-center mt-auto pt-6">
-                <Button className="bg-red-500 hover:bg-red-600 text-white hover:scale-105">
-                  <a href={project.demoLink} target="_blank">Demo</a>
-                </Button>
+                {project.demoLink && (
+                  <Button className="bg-red-500 hover:bg-red-600 text-white hover:scale-105">
+                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>
+                  </Button>
+                )}
                 <Button className="border bg-white border-gray-700 text-gray-700 hover:bg-gray-100 hover:scale-105">
-                  <a href={project.codeLink} target="_blank">Code</a>
+                  <a href={project.codeLink} target="_blank" rel="noopener noreferrer">Code</a>
                 </Button>
               </CardFooter>
             </CardContent>

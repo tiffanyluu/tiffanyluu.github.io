@@ -24,15 +24,16 @@ const About = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-12 mt-12 justify-center items-end relative">
-        <Avatar className="w-72 h-72 rounded-full border-4 border-slate-300 shadow-lg z-10">
-          <AvatarImage
-            src="src/assets/me.jpg"
-            alt="Tiffany"
-            className="object-cover"
-          />
-          <AvatarFallback>T</AvatarFallback>
-        </Avatar>
-
+        <a href="https://linkedin.com/in/tiffany-t-luu/" target="_blank" rel="noopener noreferrer">
+          <Avatar className="w-72 h-72 rounded-full border-4 border-slate-300 shadow-lg z-10">
+            <AvatarImage
+              src="src/assets/me.jpg"
+              alt="Tiffany"
+              className="object-cover"
+            />
+            <AvatarFallback>T</AvatarFallback>
+          </Avatar>
+        </a>
         <Avatar className="w-56 h-72 rounded-2xl border-4 border-slate-300 shadow-lg -mt-6 z-0">
           <AvatarImage
             src="src/assets/mydog.jpg"

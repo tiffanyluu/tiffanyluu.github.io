@@ -1,14 +1,12 @@
 import { SiReact, SiNodedotjs, SiPostgresql, SiTypescript, SiJavascript } from "react-icons/si";
 import { Button } from "./ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from "./ui/card";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const projects = [
   {
     title: "Movie Matcher",
-    img: "src/assets/moviematcher.png",
+    img: "/moviematcher.png",
     description: "A movie recommendation system that uses ML algorithms to suggest movies.",
     tech: [
       { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
@@ -16,12 +14,12 @@ const projects = [
       { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-orange-200 text-orange-900" },
       { name: "TypeScript", icon: <SiTypescript size={16} />, color: "bg-indigo-200 text-indigo-900" },
     ],
-    demoLink: "https://movie-matcher-tiffany.vercel.app/login",
+    demoLink: "https://movie-matcher-tiffany.vercel.app/",
     codeLink: "https://github.com/tiffanyluu/movie-matcher",
   },
   {
     title: "Turnip Trader",
-    img: "src/assets/turniptrader.png",
+    img: "/turniptrader.png",
     description: "AI-powered Animal Crossing turnip price simulator and advisor using RAG and LLMs.",
     tech: [
       { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
@@ -34,7 +32,7 @@ const projects = [
   },
   {
     title: "PetRealm",
-    img: "src/assets/petrealm.png",
+    img: "/petrealm.png",
     description: "Virtual mythical pet simulation with AWS serverless automation.",
     tech: [
       { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
@@ -47,7 +45,7 @@ const projects = [
   },
   {
     title: "Barber Supply",
-    img: "src/assets/barber.png",
+    img: "/barber.png",
     description: "Crud inventory management app for local barber shop",
     tech: [
       { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
@@ -57,7 +55,7 @@ const projects = [
   },
   {
     title: "Caro",
-    img: "src/assets/caro.png",
+    img: "/caro.png",
     description: "Traditional Vietnamese strategy game.",
     tech: [
       { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
@@ -67,7 +65,7 @@ const projects = [
   },
   {
     title: "Pokemon Memory Game",
-    img: "src/assets/pokemon.png",
+    img: "/pokemon.png",
     description: "A memory game featuring over 1,000 Pokémon using the PokéAPI.",
     tech: [
       { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
@@ -78,7 +76,7 @@ const projects = [
   },
   {
     title: "Sproutly",
-    img: "src/assets/sproutly.png",
+    img: "/sproutly.png",
     description: "To-Do App: Where every task is a sprout of progress.",
     tech: [
       { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
@@ -88,55 +86,72 @@ const projects = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const ProjectsSection = () => {
-  useEffect(() => {
-    AOS.init({duration: 900, once: true});
-  }, [])
   return (
-    <section id='projects' className="min-h-screen scroll-mt-24 flex flex-col items-center text-center mt-32 px-16">
-      <h2 className="font-bold text-4xl mb-16">Projects</h2>
+    <section id="projects" className="min-h-screen scroll-mt-24 flex flex-col items-center text-center mt-32 px-16">
+      <motion.h2
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.8 }}
+        className="font-bold text-4xl mb-16"
+      >
+        Projects
+      </motion.h2>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
         {projects.map((project) => (
-          <Card
+          <motion.div
             key={project.title}
-            className="flex flex-col flex-1 min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
-            data-aos="fade-up"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+            className="flex"
           >
-            <CardHeader>
-              <img
-                src={project.img}
-                alt={`${project.title} screenshot`}
-                className="w-full h-48 object-cover"
-              />
-              <CardTitle className="whitespace-nowrap text-xl font-semibold mt-2">
-                {project.title}
-              </CardTitle>
-            </CardHeader>
+            <Card className="flex flex-col flex-1 min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow h-full">
+              <CardHeader>
+                <img
+                  src={project.img}
+                  alt={`${project.title} screenshot`}
+                  className="w-full h-48 object-cover"
+                />
+                <CardTitle className="whitespace-nowrap text-xl font-semibold mt-2">
+                  {project.title}
+                </CardTitle>
+              </CardHeader>
 
-            <CardContent className="flex flex-col flex-1 gap-2">
-              <CardDescription className="text-[18px]">{project.description}</CardDescription>
-              <div className="flex flex-wrap gap-2 mt-4 justify-center">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech.name}
-                    className={`${tech.color} px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 hover:scale-105 transition-transform`}
-                  >
-                    {tech.icon} {tech.name}
-                  </span>
-                ))}
-              </div>
-              <CardFooter className="flex justify-evenly items-center mt-auto pt-6">
-                {project.demoLink && (
-                  <Button className="bg-red-500 hover:bg-red-600 text-white hover:scale-105">
-                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>
+              <CardContent className="flex flex-col flex-1 gap-2">
+                <CardDescription className="text-[18px]">{project.description}</CardDescription>
+                <div className="flex flex-wrap gap-2 mt-4 justify-center">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech.name}
+                      className={`${tech.color} px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 hover:scale-105 transition-transform`}
+                    >
+                      {tech.icon} {tech.name}
+                    </span>
+                  ))}
+                </div>
+                <CardFooter className="flex justify-evenly items-center mt-auto pt-6">
+                  {project.demoLink && (
+                    <Button className="bg-red-500 hover:bg-red-600 text-white hover:scale-105">
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>
+                    </Button>
+                  )}
+                  <Button className="border bg-white border-gray-700 text-gray-700 hover:bg-gray-100 hover:scale-105">
+                    <a href={project.codeLink} target="_blank" rel="noopener noreferrer">Code</a>
                   </Button>
-                )}
-                <Button className="border bg-white border-gray-700 text-gray-700 hover:bg-gray-100 hover:scale-105">
-                  <a href={project.codeLink} target="_blank" rel="noopener noreferrer">Code</a>
-                </Button>
-              </CardFooter>
-            </CardContent>
-          </Card>
+                </CardFooter>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </section>

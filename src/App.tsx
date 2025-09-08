@@ -7,7 +7,7 @@ import ProjectsSection from "./components/ProjectsSection"
 
 const App = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div id="main" className="flex flex-col min-h-screen">
       <NavBar />
       <Hero />
       <ProjectsSection />

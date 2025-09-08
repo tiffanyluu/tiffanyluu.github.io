@@ -1,7 +1,7 @@
 import { SiReact, SiNodedotjs, SiPostgresql, SiTypescript, SiJavascript } from "react-icons/si";
 import { Button } from "./ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from "./ui/card";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const projects = [
   {
@@ -86,14 +86,14 @@ const projects = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const ProjectsSection = () => {
+  const prefersReducedMotion = useReducedMotion();
+  const cardVariants = prefersReducedMotion
+    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
+
   return (
-    <section id="projects" className="min-h-screen scroll-mt-24 flex flex-col items-center text-center mt-32 px-16">
+    <section id="projects" className="min-h-screen scroll-mt-24 flex flex-col items-center text-center mt-24 md:mt-32 px-4 sm:px-8 md:px-16">
       <motion.h2
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -104,7 +104,7 @@ const ProjectsSection = () => {
         Projects
       </motion.h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full max-w-6xl">
         {projects.map((project) => (
           <motion.div
             key={project.title}
@@ -116,19 +116,21 @@ const ProjectsSection = () => {
             className="flex"
           >
             <Card className="flex flex-col flex-1 min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow h-full">
-              <CardHeader>
+              <CardHeader className="p-4 md:p-6">
                 <img
                   src={project.img}
                   alt={`${project.title} screenshot`}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-44 sm:h-48 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
-                <CardTitle className="whitespace-nowrap text-xl font-semibold mt-2">
+                <CardTitle className="text-lg md:text-xl font-semibold mt-2 truncate">
                   {project.title}
                 </CardTitle>
               </CardHeader>
 
-              <CardContent className="flex flex-col flex-1 gap-2">
-                <CardDescription className="text-[18px]">{project.description}</CardDescription>
+              <CardContent className="flex flex-col flex-1 gap-2 p-4 md:p-6">
+                <CardDescription className="text-base md:text-[18px]">{project.description}</CardDescription>
                 <div className="flex flex-wrap gap-2 mt-4 justify-center">
                   {project.tech.map((tech) => (
                     <span
@@ -139,13 +141,13 @@ const ProjectsSection = () => {
                     </span>
                   ))}
                 </div>
-                <CardFooter className="flex justify-evenly items-center mt-auto pt-6">
+                <CardFooter className="flex flex-col sm:flex-row gap-3 sm:gap-0 justify-evenly items-center mt-auto pt-6">
                   {project.demoLink && (
-                    <Button className="bg-red-500 hover:bg-red-600 text-white hover:scale-105">
+                    <Button className="bg-red-500 hover:bg-red-600 text-white hover:scale-105 w-full sm:w-auto">
                       <a href={project.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>
                     </Button>
                   )}
-                  <Button className="border bg-white border-gray-700 text-gray-700 hover:bg-gray-100 hover:scale-105">
+                  <Button className="border bg-white border-gray-700 text-gray-700 hover:bg-gray-100 hover:scale-105 w-full sm:w-auto">
                     <a href={project.codeLink} target="_blank" rel="noopener noreferrer">Code</a>
                   </Button>
                 </CardFooter>

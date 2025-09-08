@@ -1,16 +1,16 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const About = () => {
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const prefersReducedMotion = useReducedMotion();
+  const textVariants = prefersReducedMotion
+    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
   return (
     <section
       id="about"
-      className="relative mt-16 min-h-screen flex flex-col justify-start items-center px-8 pt-32 overflow-hidden"
+      className="relative mt-12 md:mt-16 min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 md:px-8 pt-24 md:pt-32 overflow-hidden"
     >
       <div
         className="absolute -top-32 -left-32 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
@@ -30,7 +30,7 @@ const About = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8 }}
-        className="text-4xl font-bold mb-8 text-center"
+        className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center"
       >
         About Me
       </motion.h2>
@@ -41,7 +41,7 @@ const About = () => {
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.8 }}
-        className="max-w-2xl text-2xl text-slate-700 space-y-6 text-left"
+        className="max-w-2xl text-lg sm:text-xl md:text-2xl text-slate-700 space-y-4 md:space-y-6 text-left px-1"
       >
         <p>
           I’m a Full-Stack Software Engineer passionate about creating
@@ -64,7 +64,7 @@ const About = () => {
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="flex flex-col sm:flex-row gap-20 mt-20 mb-8 justify-center items-end relative"
+        className="flex flex-col sm:flex-row gap-10 sm:gap-16 md:gap-20 mt-12 md:mt-20 mb-8 justify-center items-center sm:items-end relative"
       >
         <motion.div
           whileHover={{
@@ -75,14 +75,14 @@ const About = () => {
           className="rounded-full"
         >
           <a href="https://linkedin.com/in/tiffany-t-luu/" target="_blank" rel="noopener noreferrer">
-            <Avatar className="w-72 h-72 rounded-full border-4 border-slate-300 shadow-lg z-10">
-              <AvatarImage src="/me.jpg" alt="Tiffany" className="object-cover" />
+            <Avatar className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full border-4 border-slate-300 shadow-lg z-10">
+              <AvatarImage src="/me.jpg" alt="Tiffany" className="object-cover" loading="lazy" decoding="async" />
               <AvatarFallback>T</AvatarFallback>
             </Avatar>
           </a>
         </motion.div>
-        <Avatar className="w-56 h-72 rounded-2xl border-4 border-slate-300 shadow-lg -mt-6 z-0">
-          <AvatarImage src="/mydog.jpg" alt="Belgian Malinois" className="object-cover" />
+        <Avatar className="w-40 h-56 sm:w-48 sm:h-64 md:w-56 md:h-72 rounded-2xl border-4 border-slate-300 shadow-lg -mt-4 md:-mt-6 z-0">
+          <AvatarImage src="/mydog.jpg" alt="Belgian Malinois" className="object-cover" loading="lazy" decoding="async" />
           <AvatarFallback>BM</AvatarFallback>
         </Avatar>
       </motion.div>

@@ -44,17 +44,19 @@ const About = () => {
         className="max-w-2xl text-lg sm:text-xl md:text-2xl text-slate-700 space-y-4 md:space-y-6 text-left px-1"
       >
         <p>
-          I’m a Full-Stack Software Engineer passionate about creating
-          interactive applications and intelligent tools.
+          My journey started with Data Science and Linguistics at UC Berkeley, 
+          which taught me that the best solutions come from understanding both 
+          the technical patterns and the human stories behind them.
         </p>
         <p>
-          I combine my Data Science background with React, Node.js,
-          TypeScript, and AI technologies to build projects that are both fun
-          and functional.
+          I love creating projects that blend practicality with personality. 
+          There's something magical about making complex technology feel 
+          approachable and even delightful.
         </p>
         <p>
-          Outside of coding, you’ll usually find me exploring nature with my
-          Belgian Malinois or diving into creative side projects.
+          When I step away from the screen, you'll find me in nature with my 
+          Belgian Malinois, who's taught me that sometimes the best solutions 
+          require taking the long road and never giving up.
         </p>
       </motion.div>
 

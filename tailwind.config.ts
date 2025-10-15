@@ -4,6 +4,9 @@ export default {
   content: ["./index.html","./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      scale: {
+        '102': '1.02',
+      },
       keyframes: {
         blob: {
           "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },

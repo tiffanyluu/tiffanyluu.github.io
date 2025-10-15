@@ -1,9 +1,20 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const About = () => {
   const prefersReducedMotion = useReducedMotion();
-  const textVariants = prefersReducedMotion
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  const textVariants = prefersReducedMotion || isMobile
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
@@ -13,23 +24,17 @@ const About = () => {
       className="relative mt-12 md:mt-16 min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 md:px-8 pt-24 md:pt-32 overflow-hidden"
     >
       <div
-        className="absolute -top-32 -left-32 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
-        style={{ animationDelay: "0s" }}
+        className={`absolute -top-32 -left-32 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl ${isMobile ? 'opacity-10' : 'opacity-20'}`}
       />
       <div
-        className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
-        style={{ animationDelay: "5s" }}
-      />
-      <div
-        className="absolute -top-16 -right-48 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-2xl opacity-25 animate-blob"
-        style={{ animationDelay: "10s" }}
+        className={`absolute -bottom-32 -right-32 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl ${isMobile ? 'opacity-10' : 'opacity-20'}`}
       />
 
       <motion.h2
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: isMobile ? 0.4 : 0.8 }}
         className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center"
       >
         About Me
@@ -39,8 +44,8 @@ const About = () => {
         variants={textVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: isMobile ? 0.4 : 0.8 }}
         className="max-w-2xl text-lg sm:text-xl md:text-2xl text-slate-700 space-y-4 md:space-y-6 text-left px-1"
       >
         <p>
@@ -64,15 +69,15 @@ const About = () => {
         variants={textVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.1 : 0.2 }}
         className="flex flex-col sm:flex-row gap-10 sm:gap-16 md:gap-20 mt-12 md:mt-20 mb-8 justify-center items-center sm:items-end relative"
       >
         <motion.div
-          whileHover={{
+          whileHover={!isMobile ? {
             scale: 1.05,
             boxShadow: "0 0 40px 10px rgba(0, 219, 219, 0.9)"
-          }}
+          } : {}}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="rounded-full"
         >

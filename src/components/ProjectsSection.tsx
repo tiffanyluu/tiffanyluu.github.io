@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 const projects = [
   {
     title: "Movie Matcher",
-    img: "/moviematcher.png",
+    img: "/moviematcher.jpg",
     description: "A movie recommendation system that uses ML algorithms to suggest movies.",
     tech: [
       { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
@@ -19,7 +19,7 @@ const projects = [
   },
   {
     title: "Turnip Trader",
-    img: "/turniptrader.png",
+    img: "/turniptrader.jpg",
     description: "AI-powered Animal Crossing turnip price simulator and advisor using RAG and LLMs.",
     tech: [
       { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
@@ -32,7 +32,7 @@ const projects = [
   },
   {
     title: "PetRealm",
-    img: "/petrealm.png",
+    img: "/petrealm.jpg",
     description: "Virtual mythical pet simulation with AWS serverless automation.",
     tech: [
       { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
@@ -45,7 +45,7 @@ const projects = [
   },
   {
     title: "Barber Supply",
-    img: "/barber.png",
+    img: "/barber.jpg",
     description: "Crud inventory management app for local barber shop",
     tech: [
       { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
@@ -55,7 +55,7 @@ const projects = [
   },
   {
     title: "Caro",
-    img: "/caro.png",
+    img: "/caro.jpg",
     description: "Traditional Vietnamese strategy game.",
     tech: [
       { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
@@ -65,7 +65,7 @@ const projects = [
   },
   {
     title: "Pokemon Memory Game",
-    img: "/pokemon.png",
+    img: "/pokemon.jpg",
     description: "A memory game featuring over 1,000 Pokémon using the PokéAPI.",
     tech: [
       { name: "React", icon: <SiReact size={16} />, color: "bg-cyan-200 text-cyan-900" },
@@ -76,7 +76,7 @@ const projects = [
   },
   {
     title: "Sproutly",
-    img: "/sproutly.png",
+    img: "/sproutly.jpg",
     description: "To-Do App: Where every task is a sprout of progress.",
     tech: [
       { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },

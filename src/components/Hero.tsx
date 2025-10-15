@@ -1,26 +1,34 @@
 import { Button } from "./ui/button";
 import { HiDownload } from "react-icons/hi";
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
   const prefersReducedMotion = useReducedMotion();
-  const fadeUp = prefersReducedMotion
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  const fadeUp = prefersReducedMotion || isMobile
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-8 overflow-hidden bg-white">
       <div
-        className="absolute -top-32 -left-32 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
-        style={{ animationDelay: "0s" }}
+        className={`absolute -top-32 -left-32 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl ${isMobile ? 'opacity-10' : 'opacity-20'}`}
       />
       <div
-        className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
-        style={{ animationDelay: "5s" }}
+        className={`absolute -bottom-32 -right-32 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl ${isMobile ? 'opacity-10' : 'opacity-20'}`}
       />
       <div
-        className="absolute -top-16 -right-48 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-2xl opacity-25 animate-blob"
-        style={{ animationDelay: "10s" }}
+        className={`absolute -top-16 -right-48 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-2xl ${isMobile ? 'opacity-15' : 'opacity-25'}`}
       />
 
       <motion.h1
@@ -29,7 +37,7 @@ const Hero = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.5 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: isMobile ? 0.4 : 0.8 }}
       >
         Tiffany Luu
       </motion.h1>
@@ -40,7 +48,7 @@ const Hero = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.5 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.1 : 0.2 }}
       >
         <h2 className="text-2xl sm:text-3xl text-slate-700">Full-Stack Software Engineer</h2>
         <p className="text-base sm:text-lg text-muted-foreground pt-2">UC Berkeley Data Science Graduate</p>
@@ -52,14 +60,14 @@ const Hero = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.5 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
+        transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.2 : 0.4 }}
       >
-        <Button asChild className="text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 bg-blue-600 hover:bg-blue-700 hover:scale-105 w-full sm:w-auto">
+        <Button asChild className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 bg-blue-600 hover:bg-blue-700 ${isMobile ? '' : 'hover:scale-105'} w-full sm:w-auto`}>
           <a href="/resume.pdf" target="_blank">
             <HiDownload size={20} /> Resume
           </a>
         </Button>
-        <Button asChild variant="outline" className="text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 hover:scale-105 w-full sm:w-auto">
+        <Button asChild variant="outline" className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 ${isMobile ? '' : 'hover:scale-105'} w-full sm:w-auto`}>
           <a href="#contact">Contact</a>
         </Button>
       </motion.div>

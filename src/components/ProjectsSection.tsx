@@ -47,7 +47,7 @@ const projects = [
   {
     title: "Barber Supply",
     img: "/barber.jpg",
-    description: "Crud inventory management app for local barber shop",
+    description: "CRUD inventory management app for barber shops.",
     tech: [
       { name: "JavaScript", icon: <SiJavascript size={16} />, color: "bg-yellow-200 text-yellow-900" },
       { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-orange-200 text-orange-900" },

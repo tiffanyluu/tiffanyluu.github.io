@@ -46,22 +46,17 @@ const About = () => {
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: isMobile ? 0.4 : 0.8 }}
-        className="max-w-2xl text-lg sm:text-xl md:text-2xl text-slate-700 space-y-4 md:space-y-6 text-left px-1"
+        className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-700 space-y-4 md:space-y-5 text-left px-1"
+
       >
         <p>
-          My journey started with Data Science and Linguistics at UC Berkeley, 
-          which taught me that the best solutions come from understanding both 
-          the technical patterns and the human stories behind them.
+          My journey began with Data Science and Linguistics at UC Berkeley, where I learned that the best solutions come from understanding both technical patterns and human stories.
         </p>
         <p>
-          I love creating projects that blend practicality with personality. 
-          There's something magical about making complex technology feel 
-          approachable and even delightful.
+          Now, as a Full-Stack Software Engineer at Mazlo, I build features that help nonprofits streamline banking, accounting, and compliance. By simplifying complex workflows, I enable nonprofits to focus on what really matters: their mission.
         </p>
         <p>
-          When I step away from the screen, you'll find me in nature with my 
-          Belgian Malinois, who's taught me that sometimes the best solutions 
-          require taking the long road and never giving up.
+          When I step away from the screen, you’ll find me in nature with my Belgian Malinois, who’s taught me that sometimes the best solutions require taking the long road and never giving up.
         </p>
       </motion.div>
 

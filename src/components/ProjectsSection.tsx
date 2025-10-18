@@ -17,6 +17,7 @@ const projects = [
     ],
     demoLink: "https://movie-matcher-tiffany.vercel.app/",
     codeLink: "https://github.com/tiffanyluu/movie-matcher",
+    isArchived: true,
   },
   {
     title: "Turnip Trader",
@@ -30,6 +31,7 @@ const projects = [
     ],
     demoLink: "https://turnip-trader.vercel.app/",
     codeLink: "https://github.com/tiffanyluu/turnip-trader",
+    isArchived: true,
   },
   {
     title: "PetRealm",
@@ -43,6 +45,7 @@ const projects = [
     ],
     demoLink: "https://petrealm.vercel.app/",
     codeLink: "https://github.com/tiffanyluu/petrealm",
+    isArchived: true,
   },
   {
     title: "Barber Supply",
@@ -53,6 +56,7 @@ const projects = [
       { name: "PostgreSQL", icon: <SiPostgresql size={16} />, color: "bg-orange-200 text-orange-900" },
     ],
     codeLink: "https://github.com/tiffanyluu/barber-supply",
+    isArchived: false,
   },
   {
     title: "Caro",
@@ -63,6 +67,7 @@ const projects = [
     ],
     demoLink: "https://tiffanyluu.github.io/caro/",
     codeLink: "https://github.com/tiffanyluu/caro",
+    isArchived: false,
   },
   {
     title: "Pokemon Memory Game",
@@ -74,6 +79,7 @@ const projects = [
     ],
     demoLink: "https://tiffany-pokemon-memory-game.vercel.app/",
     codeLink: "https://github.com/tiffanyluu/pokemon-memory-game",
+    isArchived: false,
   },
   {
     title: "Sproutly",
@@ -84,6 +90,7 @@ const projects = [
     ],
     demoLink: "https://tiffanyluu.github.io/sproutly/",
     codeLink: "https://github.com/tiffanyluu/sproutly",
+    isArchived: false,
   },
 ];
 
@@ -141,7 +148,7 @@ const ProjectsSection = () => {
             loading="lazy"
             decoding="async"
           />
-          <CardTitle className="text-lg md:text-xl font-semibold mt-2 truncate">
+          <CardTitle className="text-lg md:text-xl font-semibold mt-2 truncate pt-8">
             {project.title}
           </CardTitle>
         </CardHeader>
@@ -159,11 +166,18 @@ const ProjectsSection = () => {
             ))}
           </div>
           <CardFooter className="flex flex-col sm:flex-row gap-3 sm:gap-0 justify-evenly items-center mt-auto pt-6">
-            {project.demoLink && (
+            {project.demoLink && project.isArchived ? (
+              <Button
+              className="bg-gray-200 text-gray-600 cursor-not-allowed w-full sm:w-auto hover:bg-gray-200 active:bg-gray-200"
+              disabled
+            >
+              Demo (Archived)
+            </Button>
+            ) : project.demoLink ? (
               <Button className="bg-red-500 hover:bg-red-600 text-white hover:scale-105 w-full sm:w-auto">
                 <a href={project.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>
               </Button>
-            )}
+            ) : null}
             <Button className="border bg-white border-gray-700 text-gray-700 hover:bg-gray-100 hover:scale-105 w-full sm:w-auto">
               <a href={project.codeLink} target="_blank" rel="noopener noreferrer">Code</a>
             </Button>

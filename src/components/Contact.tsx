@@ -23,6 +23,7 @@ const Contact = () => {
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-center"
       >
         Contact
@@ -32,6 +33,7 @@ const Contact = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1 }}
+        viewport={{ once: true }}
         className="text-lg sm:text-xl md:text-2xl text-slate-700 mt-4 md:mt-6 mb-8 md:mb-12 text-center px-1"
       >
         I'm always happy to connect!<br />Feel free to reach out ~
@@ -41,6 +43,7 @@ const Contact = () => {
         initial="hidden"
         whileInView="visible"
         transition={{ staggerChildren: 0.15 }}
+        viewport={{ once: true }}
         className="flex flex-wrap gap-4 sm:gap-6 justify-center"
       >
         {[

@@ -99,6 +99,10 @@ const ProjectsSection = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+  const titleVariants = prefersReducedMotion || isMobile
+    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    : { hidden: { opacity: 0, x: -100 }, visible: { opacity: 1, x: 0 } };
+  
   const cardVariants = prefersReducedMotion || isMobile
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
@@ -106,8 +110,9 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="min-h-screen scroll-mt-24 flex flex-col items-center text-center mt-24 md:mt-32 px-4 sm:px-8 md:px-16">
       <motion.h2
-        initial={isMobile ? { opacity: 0 } : { opacity: 0, x: -100 }}
-        whileInView={isMobile ? { opacity: 1 } : { opacity: 1, x: 0 }}
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: false }}
         transition={{ duration: isMobile ? 0.4 : 0.8 }}
         className="font-bold text-4xl mb-16"

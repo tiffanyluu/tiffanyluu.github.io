@@ -114,7 +114,7 @@ const ProjectsSection = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
-        transition={{ duration: isMobile ? 0.4 : 0.8 }}
+        transition={{ duration: 0.4 }}
         className="font-bold text-4xl mb-16"
       >
         Projects

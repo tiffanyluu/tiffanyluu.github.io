@@ -21,7 +21,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative mt-12 md:mt-16 min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 md:px-8 pt-24 md:pt-32 overflow-hidden"
+      className="relative mt-12 md:mt-16 min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 md:px-8 pt-24 md:pt-32 pb-16 md:pb-20 overflow-hidden"
     >
       <div
         className={`absolute -top-32 -left-32 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl ${isMobile ? 'opacity-10' : 'opacity-20'}`}

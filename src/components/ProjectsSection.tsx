@@ -98,7 +98,7 @@ const ProjectsSection = () => {
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
         className="font-bold text-4xl mb-16"
       >
         Projects

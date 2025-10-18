@@ -99,81 +99,84 @@ const ProjectsSection = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-  const titleVariants = prefersReducedMotion || isMobile
-    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
-    : { hidden: { opacity: 0, x: -100 }, visible: { opacity: 1, x: 0 } };
-  
+
+  // Variants for cards
   const cardVariants = prefersReducedMotion || isMobile
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
   return (
     <section id="projects" className="min-h-screen scroll-mt-24 flex flex-col items-center text-center mt-24 md:mt-32 px-4 sm:px-8 md:px-16">
+      {/* Title */}
       <motion.h2
-        variants={titleVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false }}
-        transition={{ duration: 0.4 }}
         className="font-bold text-4xl mb-16"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.6 }}
       >
         Projects
       </motion.h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full max-w-6xl">
-        {projects.map((project) => (
-          <motion.div
-            key={project.title}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: isMobile ? 0.4 : 0.8 }}
-            className="flex"
-          >
-            <Card className="flex flex-col flex-1 min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow h-full">
-              <CardHeader className="p-4 md:p-6">
-                <img
-                  src={project.img}
-                  alt={`${project.title} screenshot`}
-                  className="w-full h-44 sm:h-48 object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <CardTitle className="text-lg md:text-xl font-semibold mt-2 truncate">
-                  {project.title}
-                </CardTitle>
-              </CardHeader>
+      {/* Cards Grid */}
+      <motion.div
+  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full max-w-6xl"
+>
+  {projects.map((project) => (
+    <motion.div
+      key={project.title}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6 }}
+      className="flex"
+    >
+      <Card className="flex flex-col flex-1 min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow h-full">
+        <CardHeader className="p-4 md:p-6">
+          <img
+            src={project.img}
+            alt={`${project.title} screenshot`}
+            className="w-full h-44 sm:h-48 object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          <CardTitle className="text-lg md:text-xl font-semibold mt-2 truncate">
+            {project.title}
+          </CardTitle>
+        </CardHeader>
 
-              <CardContent className="flex flex-col flex-1 gap-2 p-4 md:p-6">
-                <CardDescription className="text-base md:text-[18px]">{project.description}</CardDescription>
-                <div className="flex flex-wrap gap-2 mt-4 justify-center">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech.name}
-                      className={`${tech.color} px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 hover:scale-105 transition-transform`}
-                    >
-                      {tech.icon} {tech.name}
-                    </span>
-                  ))}
-                </div>
-                <CardFooter className="flex flex-col sm:flex-row gap-3 sm:gap-0 justify-evenly items-center mt-auto pt-6">
-                  {project.demoLink && (
-                    <Button className="bg-red-500 hover:bg-red-600 text-white hover:scale-105 w-full sm:w-auto">
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>
-                    </Button>
-                  )}
-                  <Button className="border bg-white border-gray-700 text-gray-700 hover:bg-gray-100 hover:scale-105 w-full sm:w-auto">
-                    <a href={project.codeLink} target="_blank" rel="noopener noreferrer">Code</a>
-                  </Button>
-                </CardFooter>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </div>
+        <CardContent className="flex flex-col flex-1 gap-2 p-4 md:p-6">
+          <CardDescription className="text-base md:text-[18px]">{project.description}</CardDescription>
+          <div className="flex flex-wrap gap-2 mt-4 justify-center">
+            {project.tech.map((tech) => (
+              <span
+                key={tech.name}
+                className={`${tech.color} px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 hover:scale-105 transition-transform`}
+              >
+                {tech.icon} {tech.name}
+              </span>
+            ))}
+          </div>
+          <CardFooter className="flex flex-col sm:flex-row gap-3 sm:gap-0 justify-evenly items-center mt-auto pt-6">
+            {project.demoLink && (
+              <Button className="bg-red-500 hover:bg-red-600 text-white hover:scale-105 w-full sm:w-auto">
+                <a href={project.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>
+              </Button>
+            )}
+            <Button className="border bg-white border-gray-700 text-gray-700 hover:bg-gray-100 hover:scale-105 w-full sm:w-auto">
+              <a href={project.codeLink} target="_blank" rel="noopener noreferrer">Code</a>
+            </Button>
+          </CardFooter>
+        </CardContent>
+      </Card>
+    </motion.div>
+  ))}
+</motion.div>
+
     </section>
   );
 };
+
 
 export default ProjectsSection;

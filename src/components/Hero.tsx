@@ -36,7 +36,7 @@ const Hero = () => {
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.5 }}
+        viewport={{ once: true }}
         transition={{ duration: isMobile ? 0.4 : 0.8 }}
       >
         Tiffany Luu
@@ -47,7 +47,7 @@ const Hero = () => {
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.5 }}
+        viewport={{ once: true }}
         transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.1 : 0.2 }}
       >
         <h2 className="text-2xl sm:text-3xl text-slate-700">Full-Stack Software Engineer</h2>
@@ -59,7 +59,7 @@ const Hero = () => {
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.5 }}
+        viewport={{ once: true }}
         transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.2 : 0.4 }}
       >
         <Button asChild className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 bg-blue-600 hover:bg-blue-700 ${isMobile ? '' : 'hover:scale-105'} w-full sm:w-auto`}>

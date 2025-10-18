@@ -22,7 +22,6 @@ const Contact = () => {
       <motion.h2
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
         transition={{ duration: 0.8 }}
         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-center"
       >
@@ -32,7 +31,6 @@ const Contact = () => {
       <motion.p
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
         transition={{ duration: 0.8, delay: 0.1 }}
         className="text-lg sm:text-xl md:text-2xl text-slate-700 mt-4 md:mt-6 mb-8 md:mb-12 text-center px-1"
       >
@@ -42,7 +40,6 @@ const Contact = () => {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
         transition={{ staggerChildren: 0.15 }}
         className="flex flex-wrap gap-4 sm:gap-6 justify-center"
       >

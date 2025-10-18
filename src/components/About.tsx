@@ -33,7 +33,7 @@ const About = () => {
       <motion.h2
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: isMobile ? 0.4 : 0.8 }}
         className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center"
       >
@@ -44,7 +44,7 @@ const About = () => {
         variants={textVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true }}
         transition={{ duration: isMobile ? 0.4 : 0.8 }}
         className="max-w-2xl text-lg sm:text-xl md:text-2xl text-slate-700 space-y-4 md:space-y-6 text-left px-1"
       >
@@ -69,7 +69,7 @@ const About = () => {
         variants={textVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true }}
         transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.1 : 0.2 }}
         className="flex flex-col sm:flex-row gap-10 sm:gap-16 md:gap-20 mt-12 md:mt-20 mb-8 justify-center items-center sm:items-end relative"
       >

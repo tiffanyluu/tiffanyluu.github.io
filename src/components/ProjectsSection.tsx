@@ -2,6 +2,7 @@ import { SiReact, SiNodedotjs, SiPostgresql, SiTypescript, SiJavascript } from "
 import { Button } from "./ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from "./ui/card";
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const projects = [
   {
@@ -88,17 +89,27 @@ const projects = [
 
 const ProjectsSection = () => {
   const prefersReducedMotion = useReducedMotion();
-  const cardVariants = prefersReducedMotion
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  const cardVariants = prefersReducedMotion || isMobile
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
   return (
     <section id="projects" className="min-h-screen scroll-mt-24 flex flex-col items-center text-center mt-24 md:mt-32 px-4 sm:px-8 md:px-16">
       <motion.h2
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={isMobile ? { opacity: 0 } : { opacity: 0, x: -100 }}
+        whileInView={isMobile ? { opacity: 1 } : { opacity: 1, x: 0 }}
         viewport={{ once: false }}
-        transition={{ duration: 0.4 }}
+        transition={{ duration: isMobile ? 0.4 : 0.8 }}
         className="font-bold text-4xl mb-16"
       >
         Projects
@@ -112,7 +123,7 @@ const ProjectsSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: isMobile ? 0.4 : 0.8 }}
             className="flex"
           >
             <Card className="flex flex-col flex-1 min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow h-full">

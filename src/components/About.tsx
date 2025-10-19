@@ -15,7 +15,7 @@ const About = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
   const textVariants = prefersReducedMotion || isMobile
-    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
   return (
@@ -34,7 +34,7 @@ const About = () => {
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: isMobile ? 0.4 : 0.8 }}
+        transition={{ duration: isMobile ? 0 : 0.8 }}
         className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center"
       >
         About Me
@@ -45,7 +45,7 @@ const About = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: isMobile ? 0.4 : 0.8 }}
+        transition={{ duration: isMobile ? 0 : 0.8 }}
         className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-700 space-y-4 md:space-y-5 text-left px-1"
 
       >
@@ -65,7 +65,7 @@ const About = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.1 : 0.2 }}
+        transition={{ duration: isMobile ? 0 : 0.8, delay: isMobile ? 0 : 0.2 }}
         className="flex flex-col sm:flex-row gap-10 sm:gap-16 md:gap-20 mt-12 md:mt-20 mb-8 justify-center items-center sm:items-end relative"
       >
         <motion.div

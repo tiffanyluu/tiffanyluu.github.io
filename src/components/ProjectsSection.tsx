@@ -109,7 +109,7 @@ const ProjectsSection = () => {
 
   // Variants for cards
   const cardVariants = prefersReducedMotion || isMobile
-    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
   return (
@@ -120,7 +120,7 @@ const ProjectsSection = () => {
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: isMobile ? 0 : 0.6 }}
       >
         Projects
       </motion.h2>
@@ -136,7 +136,7 @@ const ProjectsSection = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: isMobile ? 0 : 0.6 }}
       className="flex"
     >
       <Card className="flex flex-col flex-1 min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow h-full">

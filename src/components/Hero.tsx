@@ -16,7 +16,7 @@ const Hero = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
   const fadeUp = prefersReducedMotion || isMobile
-    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
     : { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
   return (
@@ -37,7 +37,7 @@ const Hero = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: isMobile ? 0.4 : 0.8 }}
+        transition={{ duration: isMobile ? 0 : 0.8 }}
       >
         Tiffany Luu
       </motion.h1>
@@ -48,7 +48,7 @@ const Hero = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.1 : 0.2 }}
+        transition={{ duration: isMobile ? 0 : 0.8, delay: isMobile ? 0 : 0.2 }}
       >
         <h2 className="text-2xl sm:text-3xl text-slate-700">Full-Stack Software Engineer</h2>
         <p className="text-base sm:text-lg text-muted-foreground pt-2">UC Berkeley Data Science Graduate</p>
@@ -60,14 +60,14 @@ const Hero = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.2 : 0.4 }}
+        transition={{ duration: isMobile ? 0 : 0.8, delay: isMobile ? 0 : 0.4 }}
       >
-        <Button asChild className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 bg-blue-600 hover:bg-blue-700 ${isMobile ? '' : 'hover:scale-105'} w-full sm:w-auto`}>
+        <Button asChild className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 bg-blue-600 hover:bg-blue-700 w-full sm:w-auto`}>
           <a href="/resume.pdf" target="_blank">
             <HiDownload size={20} /> Resume
           </a>
         </Button>
-        <Button asChild variant="outline" className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 ${isMobile ? '' : 'hover:scale-105'} w-full sm:w-auto`}>
+        <Button asChild variant="outline" className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 w-full sm:w-auto`}>
           <a href="#contact">Contact</a>
         </Button>
       </motion.div>

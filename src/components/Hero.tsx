@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { HiDownload } from "react-icons/hi";
+// import { HiDownload } from "react-icons/hi";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -62,11 +62,11 @@ const Hero = () => {
         viewport={{ once: true }}
         transition={{ duration: isMobile ? 0 : 0.8, delay: isMobile ? 0 : 0.4 }}
       >
-        <Button asChild className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 bg-blue-600 hover:bg-blue-700 w-full sm:w-auto`}>
+        {/* <Button asChild className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 bg-blue-600 hover:bg-blue-700 w-full sm:w-auto`}>
           <a href="/resume.pdf" target="_blank">
             <HiDownload size={20} /> Resume
           </a>
-        </Button>
+        </Button> */}
         <Button asChild variant="outline" className={`text-base sm:text-lg px-5 py-4 sm:px-6 sm:py-6 w-full sm:w-auto`}>
           <a href="#contact">Contact</a>
         </Button>
